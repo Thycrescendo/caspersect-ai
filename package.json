@@ -1,0 +1,17 @@
+{
+  "name": "caspersect-ai-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CasperSect AI - Agentic wallet risk analysis and on-chain scan registry for the Casper Agentic Buildathon 2026.",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "build": "npm run build --prefix backend && npm run build --prefix frontend",
+    "test": "npm run test --prefix backend",
+    "contracts:build": "cd smart-contracts/scan-registry && cargo build",
+    "contracts:test": "cd smart-contracts/scan-registry && cargo test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
