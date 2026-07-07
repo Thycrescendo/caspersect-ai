@@ -1,170 +1,211 @@
 # CasperSect AI
 
-CasperSect AI is an agentic Web3 security and wallet-risk intelligence platform built for the **Casper Agentic Buildathon 2026**. It combines a modern Next.js dashboard, an Express AI backend, Casper wallet integration, and an Odra smart-contract registry for recording verifiable risk scan results on Casper Testnet.
+> **An AI-powered blockchain security agent for the Casper Network**
 
-## Why it fits the Buildathon
+CasperSect AI is an intelligent blockchain security platform that helps users identify wallet risks, understand potential threats in plain language, and securely record verified security scan results on the Casper blockchain. By combining artificial intelligence with smart contracts, CasperSect AI makes Web3 security more transparent, proactive, and accessible.
 
-- **Agentic AI:** an autonomous risk agent evaluates wallet activity, assigns a risk score, explains the decision, and recommends next actions.
-- **Casper Testnet:** the project includes a Casper/Odra scan registry contract and frontend flow for submitting scan evidence.
-- **Transaction-producing component:** wallet scans can be recorded on-chain with a scan hash, risk score, category, and timestamp.
-- **DeFi/RWA relevance:** the same workflow can help wallets, DeFi users, RWA issuers, and protocol operators verify risk signals.
-- **Open-source submission:** includes setup docs, demo flow, presentation, and demo video script.
+Built for the **Casper Agentic Buildathon**, CasperSect AI demonstrates how AI agents can work alongside decentralized infrastructure to improve user safety while creating immutable, verifiable on-chain security records.
 
-## Repository Structure
+---
 
-```txt
+# Vision
+
+Blockchain security remains one of the biggest barriers to Web3 adoption. Most users struggle to identify malicious transactions, understand wallet risks, or verify whether security information can be trusted.
+
+CasperSect AI addresses this problem by acting as an intelligent security companion that:
+
+* analyzes wallet activity,
+* evaluates security risks,
+* explains threats in simple language,
+* recommends protective actions,
+* records verified security evidence permanently on the Casper blockchain.
+
+The long-term vision is to provide every Casper user with an AI-powered security assistant capable of preventing attacks before they happen while maintaining transparent, verifiable on-chain records.
+
+---
+
+# Key Features
+
+* AI-powered wallet risk analysis
+* Intelligent threat explanations
+* Risk scoring engine
+* On-chain scan registry
+* Immutable security evidence storage
+* Casper Testnet smart contract integration
+* Wallet-ready architecture
+* Modern Next.js frontend
+* Express.js backend API
+* Rust smart contracts built with the Native Casper Rust SDK
+
+---
+
+# Technology Stack
+
+## Frontend
+
+* Next.js 15
+* React
+* TypeScript
+* Tailwind CSS
+
+## Backend
+
+* Node.js
+* Express.js
+* TypeScript
+
+## Artificial Intelligence
+
+* OpenAI API
+* AI Wallet Risk Analysis
+* Security Recommendation Engine
+
+## Blockchain
+
+* Casper Network Testnet
+* Native Casper Rust Smart Contract SDK
+* Rust
+* Casper Wallet Integration
+
+---
+
+# Smart Contract
+
+CasperSect AI includes a dedicated smart contract that acts as an immutable registry for AI-generated wallet security scans.
+
+Each record contains:
+
+* Wallet Address
+* Risk Score
+* Risk Category
+* Evidence Hash
+* Security Summary
+* Reporter
+* Timestamp
+
+Public contract entry points include:
+
+* `record_scan`
+* `get_scan`
+* `total_scans`
+
+---
+
+# Casper Testnet Deployment
+
+The smart contract has been successfully deployed to the **Casper Testnet**.
+
+## Contract Address
+
+```text
+contract-9f3f473562a51da950d2fe70a0b73bf6e65936ea527819fcafbaca36bbc3dff2
+```
+
+## Contract Package
+
+```text
+contract-package-877beffd6e10dc180243d7f3e1d99f9fbbf6f7ef70900797a378d7d8a36b487b
+```
+
+## Deployment Transaction
+
+```text
+644c4d9185ed57c1dbe5cb766cea12ecaa44c831b665ec82a082f91f4a7cc1e8
+```
+
+The deployment executed successfully on the Casper Testnet and exposed the following public entry points:
+
+* `record_scan`
+* `get_scan`
+* `total_scans`
+
+The contract stores security scan data directly on-chain, allowing applications to verify recorded scan information without relying on centralized infrastructure.
+
+---
+
+# Project Structure
+
+```
 caspersect-ai/
-├── frontend/                # Next.js 15 + TypeScript + Tailwind UI
-├── backend/                 # Express + TypeScript AI/risk-analysis API
-├── smart-contracts/          # Odra/Casper scan registry contract
+
+├── frontend/
+│   ├── Next.js
+│   ├── React
+│   └── Tailwind CSS
+│
+├── backend/
+│   ├── Express API
+│   ├── AI Risk Engine
+│   └── Casper Integration
+│
+├── smart-contracts/
 │   └── scan-registry/
+│       ├── Rust
+│       ├── Native Casper SDK
+│       └── Smart Contract
+│
 ├── docs/
-│   ├── demo-video-script.md
-│   ├── hackathon-submission.md
-│   └── testnet-deployment.md
-├── pitch/
-│   └── CasperSect-AI-Hackathon-Pitch.pptx
-├── package.json
 └── README.md
 ```
 
-## Quick Start
+---
 
-### 1. Install everything
+# How It Works
 
-```bash
-npm run install:all
-```
+1. A user connects their Casper wallet.
+2. The backend analyzes wallet activity using the AI security engine.
+3. The AI produces:
 
-Or install each app separately:
+   * Risk score
+   * Risk category
+   * Human-readable explanation
+   * Evidence hash
+4. The user approves recording the scan.
+5. The smart contract permanently stores the scan on the Casper Testnet.
+6. Applications can later retrieve and verify scan records directly from the blockchain.
 
-```bash
-cd backend && npm install
-cd ../frontend && npm install
-```
+---
 
-### 2. Configure backend
+# Why CasperSect AI?
 
-```bash
-cd backend
-cp .env.example .env
-```
+CasperSect AI combines artificial intelligence with blockchain technology to provide:
 
-Optional AI integration:
+* Better wallet security
+* Transparent risk reporting
+* Verifiable security records
+* Trustless evidence storage
+* Improved user confidence when interacting with decentralized applications
 
-```env
-OPENAI_API_KEY=your_openai_key
-OPENAI_MODEL=gpt-4o-mini
-```
+Instead of relying on centralized security databases, CasperSect AI creates immutable on-chain security records that can be independently verified by anyone.
 
-If no OpenAI key is provided, the backend uses the built-in deterministic risk engine so the app still works for demo purposes.
+---
 
-### 3. Run backend
+# Future Roadmap
 
-```bash
-cd backend
-npm run dev
-```
+* Autonomous AI security agent workflows
+* Real-time wallet monitoring
+* Smart contract vulnerability detection
+* Phishing and scam detection
+* Multi-wallet support
+* Cross-chain security intelligence
+* Risk notification system
+* Security analytics dashboard
+* Enterprise API
+* DAO governance integration
 
-Backend runs at:
+---
 
-```txt
-http://localhost:5050
-```
+# Build Status
 
-### 4. Run frontend
+* Smart Contract: Complete
+* Casper Testnet Deployment: Complete
+* AI Risk Engine: Complete
+* Backend API: Complete
+* Frontend Dashboard: Complete
+* On-chain Scan Registry: Complete
 
-```bash
-cd frontend
-cp .env.example .env.local
-npm run dev
-```
+---
 
-Frontend runs at:
+# License
 
-```txt
-http://localhost:3000
-```
-
-### 5. Build smart contract
-
-```bash
-cd smart-contracts/scan-registry
-rustup target add wasm32-unknown-unknown
-cargo build
-```
-
-For real Testnet deployment, follow:
-
-```txt
-docs/testnet-deployment.md
-```
-
-## Main User Flow
-
-1. Open the dashboard.
-2. Connect Casper Wallet.
-3. Enter or confirm a wallet public key/account hash.
-4. Run AI risk analysis.
-5. Review the risk score, flags, and agent recommendation.
-6. Generate scan evidence hash.
-7. Record scan result on Casper Testnet.
-8. Copy the transaction hash into the dashboard to mark the scan as verified.
-
-## Backend API
-
-| Method | Endpoint | Purpose |
-|---|---|---|
-| `GET` | `/health` | API health check |
-| `POST` | `/api/risk/analyze` | Analyze wallet risk |
-| `POST` | `/api/agent/recommend` | Generate agent recommendation |
-| `POST` | `/api/casper/scan-payload` | Prepare on-chain scan payload metadata |
-| `POST` | `/api/casper/record-local` | Store submitted scan proof locally for demo history |
-| `GET` | `/api/casper/scans` | List demo scan records |
-
-## Environment Variables
-
-### Backend
-
-```env
-PORT=5050
-FRONTEND_ORIGIN=http://localhost:3000
-OPENAI_API_KEY=
-OPENAI_MODEL=gpt-4o-mini
-CASPER_NETWORK=testnet
-CASPER_NODE_RPC=https://node.testnet.casper.network/rpc
-SCAN_REGISTRY_PACKAGE_HASH=
-```
-
-### Frontend
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:5050
-NEXT_PUBLIC_CASPER_NETWORK=testnet
-NEXT_PUBLIC_CASPER_EXPLORER=https://testnet.cspr.live
-```
-
-## Hackathon Deliverables Included
-
-- Working frontend scaffold
-- Working backend API
-- AI-powered wallet risk analysis
-- Casper wallet integration helper
-- Odra smart-contract source
-- Casper Testnet deployment guide
-- Polished README
-- Demo video script
-- Hackathon submission copy
-- Pitch presentation
-
-## Demo Positioning
-
-> CasperSect AI turns a passive wallet dashboard into an autonomous security agent. It analyzes wallet behavior, explains risk, recommends actions, and records verifiable scan results on Casper Testnet.
-
-## License
-
-MIT
-
-## Validation
-
-The backend and frontend were build-tested before packaging. See `docs/validation.md` for details. The Odra contract source is included, but Rust/Cargo must be installed locally to compile and deploy it to Casper Testnet.
+MIT License
