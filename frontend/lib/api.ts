@@ -1,6 +1,5 @@
 export const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ??
-  "http://localhost:5050";
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5050";
 
 export type TxInput = {
   hash: string;
@@ -11,13 +10,46 @@ export type TxInput = {
   label?: string;
 };
 
+export type RiskResult = {
+  walletAddress: string;
+  riskScore: number;
+  category: string;
+  summary: string;
+  flags: string[];
+  transactions?: TxInput[];
+  evidenceHash?: string;
+};
+
+export type AgentRecommendation = {
+  recommendation?: string;
+  action?: string;
+  explanation: string;
+  confidence?: number;
+};
+
+export type ScanPayload = {
+  wallet: string;
+  walletAddress?: string;
+  riskScore: number;
+  category: string;
+  evidenceHash: string;
+  summary: string;
+};
+
+export type CombinedScanResult = RiskResult & {
+  agent: AgentRecommendation;
+  payload: ScanPayload;
+  txHash?: string;
+  saved?: unknown;
+};
+
 async function api<T>(path: string, body?: unknown): Promise<T> {
   const response = await fetch(`${API_URL}${path}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: body ? JSON.stringify(body) : undefined,
+    body: body !== undefined ? JSON.stringify(body) : undefined,
   });
 
   if (!response.ok) {
@@ -25,27 +57,33 @@ async function api<T>(path: string, body?: unknown): Promise<T> {
     throw new Error(message || `API request failed: ${response.status}`);
   }
 
-  return response.json();
+  return response.json() as Promise<T>;
 }
 
 export function analyzeRisk(
   walletAddress: string,
   transactions: TxInput[]
-) {
-  return api("/api/risk/analyze", {
+): Promise<RiskResult> {
+  return api<RiskResult>("/api/risk/analyze", {
     walletAddress,
     transactions,
   });
 }
 
-export function recommendAction(result: unknown) {
-  return api("/api/agent/recommend", result);
+export function recommendAction(
+  result: RiskResult
+): Promise<AgentRecommendation> {
+  return api<AgentRecommendation>("/api/agent/recommend", result);
 }
 
-export function createScanPayload(result: unknown) {
-  return api("/api/casper/scan-payload", result);
+export function createScanPayload(
+  result: RiskResult
+): Promise<ScanPayload> {
+  return api<ScanPayload>("/api/casper/scan-payload", result);
 }
 
-export function recordLocalScan(scan: unknown) {
-  return api("/api/casper/record-local", scan);
+export function recordLocalScan(
+  scan: CombinedScanResult
+): Promise<unknown> {
+  return api<unknown>("/api/casper/record-local", scan);
 }
