@@ -259,15 +259,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "casper-eip-712"
-version = "1.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "02432d99d7db610c41cf2d8f503716809f41ac12da838451d506830d09a56fb3"
-dependencies = [
- "sha3",
-]
-
-[[package]]
 name = "casper-engine-test-support"
 version = "8.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1158,15 +1149,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "keccak"
-version = "0.1.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cb26cec98cce3a3d96cbb7bced3c4b16e3d13f27ec56dbd62cbc8f39cfb9d653"
-dependencies = [
- "cpufeatures 0.2.17",
-]
-
-[[package]]
 name = "lazy_static"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1463,7 +1445,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1d39195d9dc3d3557687dacc881103529c62d92a7ad7d108ebff29bef050d453"
 dependencies = [
  "base64 0.22.1",
- "casper-eip-712",
  "odra",
  "odra-build",
 ]
@@ -2061,16 +2042,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sha3"
-version = "0.10.9"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "77fd7028345d415a4034cf8777cd4f8ab1851274233b45f84e3d955502d93874"
-dependencies = [
- "digest 0.10.7",
- "keccak",
-]
-
-[[package]]
 name = "shlex"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2623,9 +2594,9 @@ dependencies = [
 
 [[package]]
 name = "zeroize"
-version = "1.8.1"
+version = "1.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ced3678a2879b30306d323f4542626697a464a97c0a07c9aebf7ebca65cd4dde"
+checksum = "e13c156562582aa81c60cb29407084cdb54c4164760106ab78e6c5b0858cf64e"
 
 [[package]]
 name = "zmij"
