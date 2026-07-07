@@ -6,6 +6,8 @@ edition = "2021"
 [dependencies]
 casper-contract = "5.1.1"
 casper-types = "6.1.0"
+zeroize = "=1.8.1"
+base64ct = "=1.6.0"
 
 [lib]
 crate-type = ["cdylib"]
